@@ -1,4 +1,4 @@
-import { CSSProperties, HTMLAttributes, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 type TileState = {
   current: string;
@@ -24,7 +24,7 @@ type TileUpdate = {
   done: boolean;
 };
 
-export interface SplitFlapTextProps extends HTMLAttributes<HTMLDivElement> {
+export interface SplitFlapTextProps {
   words?: string[];
   text?: string;
   flipDuration?: number;
@@ -135,7 +135,7 @@ const SplitFlapText = ({
   className = '',
   style = {},
   ...props
-}: SplitFlapTextProps) => {
+}: any) => {
   const prefersReducedMotion = usePrefersReducedMotion();
   const rafRef = useRef<number | null>(null);
   const cycleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -323,7 +323,7 @@ const SplitFlapText = ({
     .map(tile => tile.current)
     .join('')
     .trimEnd();
-  const componentStyle: CSSProperties & Record<string, string | number | undefined> = {
+  const componentStyle: any & Record<string, string | number | undefined> = {
     '--split-flap-tile-color': tileColor,
     '--split-flap-text-color': textColor,
     '--split-flap-radius': toCssUnit(tileRadius),
