@@ -1,4 +1,4 @@
-import { CSSProperties, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 
 export interface DriftWallItem {
   image: string;
@@ -29,7 +29,7 @@ export interface DriftWallProps {
   grayscale?: boolean;
   overlayColor?: string;
   className?: string;
-  style?: CSSProperties;
+  style?: any;
 }
 
 interface ColumnMeta {
@@ -249,7 +249,7 @@ const DriftWall = ({
     'radial-gradient(ellipse 78% 82% at 50% 46%, #000 var(--dw-edge), transparent 100%), ' +
     'linear-gradient(to top, #000 var(--dw-edge), transparent 100%)';
 
-  const cssVars = useMemo<CSSProperties>(
+  const cssVars = useMemo<any>(
     () =>
       ({
         '--dw-tile-w': `${tileWidth}px`,
@@ -268,7 +268,7 @@ const DriftWall = ({
         WebkitMaskComposite: 'source-in',
         maskComposite: 'intersect',
         ...style
-      }) as CSSProperties,
+      }) as any,
     [tileWidth, tileHeight, gap, radius, lift, dim, grayscale, overlayColor, fade, perspective, maskStyle, style]
   );
 
